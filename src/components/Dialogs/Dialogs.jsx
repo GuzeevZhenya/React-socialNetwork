@@ -6,12 +6,12 @@ import './Dialogs.css'
 
 export default function Dialogs(props) {
 
-  let dialogsElements = props.dialogs.map(item => {
+  let dialogsElements = props.state.dialogs.map(item => {
     return (
       <DialogItem name={item.name} id={item.id}/>
     )
   })
-  let messageElements = props.messages.map(item => {
+  let messageElements = props.state.messages.map(item => {
     return (
       <Message message={item.message} id={item.id} />
     )

@@ -6,12 +6,21 @@ export default function MyPosts(props) {
   let postsElements = props.posts.map((item) => {
     return <Post message={item.message} likesCount={item.likesCount} />;
   });
+
+  let newPostElement = React.createRef();
+  
+  let addPost = () => {
+    let text = newPostElement.current.value;
+    props.addPost(text);
+    
+  }
   return (
     <div className="postBlock">
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea>Add post</textarea>
+          <textarea ref={newPostElement}>Add post</textarea>
+          <button onClick = {()=>addPost()}>Add post</button>
         </div>
       </div>
       <div className="posts">{postsElements}</div>
