@@ -1,5 +1,5 @@
 import { renderEntiredTree } from "../render";
-
+ 
 export let state = {
     profilePage: {
         posts: [
@@ -9,6 +9,7 @@ export let state = {
             { id: 4, message: "ah", likesCount: 12 },
             { id: 5, message: "erger", likesCount: 12 },
         ],
+        newPostText:'it-cam'
     },
     dialogsPage: {
         dialogs: [
@@ -29,12 +30,19 @@ export let state = {
     sidebar:{},
 }
 
-export let addPost = (postMessage)=>{
+export let addPost = ()=>{
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0
     };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
+    renderEntiredTree(state)
+}
+
+
+export let updateNewPostText = (newText)=>{
+    state.profilePage.newPostText = newText;
     renderEntiredTree(state)
 }

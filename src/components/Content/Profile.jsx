@@ -8,7 +8,7 @@ export default function Profile(props) {
   return (
     <div className="content">
       <ProfileInfo/>
-      <MyPosts posts={props.state.posts} addPost={props.addPost}/>
+      <MyPosts updateNewPostText={props.updateNewPostText} newPostText={props.profilePage.newPostText} posts={props.profilePage.posts} addPost={props.addPost}/>
     </div>
   );
 }

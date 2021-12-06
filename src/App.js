@@ -7,15 +7,14 @@ import Dialogs from "./components/Dialogs/Dialogs.jsx";
 import { Route, BrowserRouter } from "react-router-dom";
 
 function App(props) {
-
-  
+  console.log(props)
   return (
         <div className="app-wrapper">
           <Header />
           <Navbar />
           <div className="app-wrapper-content">
             <Route path="/dialogs" render={() => <Dialogs state={props.state.dialogsPage} />} />
-            <Route path="/profile" render={() => <Content state={props.state.profilePage} addPost={props.addPost} />} />
+            <Route path="/profile" render={() => <Content updateNewPostText={props.updateNewPostText} profilePage={props.state.profilePage} addPost={props.addPost} />} />
           </div>
         </div>
   );
