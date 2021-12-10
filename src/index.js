@@ -1,8 +1,27 @@
 import './index.css';
-import { state } from './redux/state';
-import { renderEntiredTree } from './render';
+import store from './redux/state';
 
-renderEntiredTree(state);
+import React from 'react';
+import ReactDOM from "react-dom";
+import './index.css';
+import App from "./App";
+import {BrowserRouter} from "react-router-dom";
+ 
+
+
+
+let renderEntiredTree = (state) => {
+	ReactDOM.render(
+		<BrowserRouter>
+			<App state={state} updateNewPostText={store.updateNewPostText.bind(store)} addPost={store.addPost.bind(store)}/>
+		</BrowserRouter>,
+		document.getElementById('root')
+	);
+}
+
+renderEntiredTree(store.getState());
+
+store.subscribe(renderEntiredTree);
 
 
 // If you want to start measuring performance in your app, pass a function
